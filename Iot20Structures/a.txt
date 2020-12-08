@@ -1,0 +1,14 @@
+vector<int> tal
+
+firstIndexToCheck = 6
+lastIndexToCheck = vector.size() -1 .... 10
+lookFor = 3244
+
+while(1)
+	int indexToCheck = 	(firstIndexToCheck + lastIndexToCheck)  / 2          5
+	if tal[indexToCheck] == lookFor 
+		break
+	if tal[indexToCheck] < lookFor       -- Är 612 mindre än 3244
+		firstIndexToCheck = indexToCheck + 1
+	if tal[indexToCheck] > lookFor       -- Är 612 större än 3244
+		lastIndexToCheck = indexToCheck - 1

@@ -111,6 +111,7 @@ void Lab1()
 	stack<string> allCommands;
 	while (true)
 	{
+		
 		string command;
 		cout << "Ange kommando - eller UNDO:";
 		cin >> command;
@@ -135,6 +136,12 @@ void Lab1()
 string Reverse(string s)
 {
 	stack<char> chars;
+	int age;
+	//for(char ch : s)
+	//{
+	//	chars.push(ch);
+	//}
+	//
 	for_each(s.begin(), s.end(), [&chars](char ch)
 		{
 			chars.push(ch);
@@ -265,7 +272,7 @@ void Bankomat()
 		{
 			cout << "Ange kontonummer";
 			cin >> kontonummer;
-			if (konton.find(kontonummer) == konton.end())
+			if (konton.find(kontonummer) == konton.end()) //if not kontonummer in dict
 			{
 				cout << "Ogiltigt konto" << endl;
 				continue;
@@ -354,7 +361,7 @@ void move_range(size_t start, size_t length, size_t dst, std::vector<T>& v)
 
 class LRUCache
 {
-	vector<Player> cachedItems;
+	vector<Player> cachedItems; 
 public:
 	Player* GetFromCache(int jerseyNumber)
 	{
@@ -391,7 +398,7 @@ public:
 
 void LRU()
 {
-	LRUCache c;
+	LRUCache c; 
 	Player *p = c.GetFromCache(13);
 	if (p == nullptr)
 		c.AddToCache(Player("Sudden", 13));
@@ -420,8 +427,135 @@ void LRU()
 
 
 
+template <class T>
+class MySuperStack
+{
+	vector<T> items;
+
+public:
+	T top()
+	{
+		if (items.empty())
+			return -1;
+		return items[items.size() - 1];
+	}
+
+	void pop()
+	{
+		items.pop_back();
+	}
+
+	void push(T s)
+	{
+		items.push_back(s);
+	}
+
+	int size()
+	{
+		return items.size();
+	}
+	
+	void empty()
+	{
+		items.clear();
+	}
+
+};
+
+
+class Hej
+{
+private:
+	string aaA;
+	int ssS;
+	float cc;
+};
+
+
+
+void BinarySearch()
+{
+	//PREREQ = Sorterat
+	
+	vector<int> tal= {	2,
+						22,
+						211,
+						318,
+						445,
+						612,
+						999,
+						1233,
+						3244,
+						34666,
+						1332143 };
+
+//	sort(tal.begin(), tal.end());
+	int firstIndexToCheck = 0;
+	int lastIIndexToCheck = tal.size()-1;
+	int lookFor;
+	cin >> lookFor;
+
+	bool exists = binary_search(tal.begin(), tal.end(), 3244);
+	auto it = lower_bound(tal.begin(), tal.end(), 3244);
+	if(it == tal.end())
+	{
+		
+	}
+	else
+	{
+		cout << *it;
+	}
+	
+
+	//binary_search() ->  binary_exists TRUE eeller FALSE
+
+	while(1)
+	{
+		int currentIndexToLook = (firstIndexToCheck + lastIIndexToCheck) / 2;
+		int value = tal[currentIndexToLook];
+		if(value == lookFor)
+		{
+			cout << "Finns!";
+			break;
+		}
+		if(firstIndexToCheck >= lastIIndexToCheck)
+		{
+			cout << "Finns inte!";
+			break;
+		}
+		if (value > lookFor)
+			lastIIndexToCheck = currentIndexToLook -1;
+
+		if (value < lookFor)
+			firstIndexToCheck = currentIndexToLook + 1;
+	}
+	
+}
+
+
+template <class  T>
+T GetBiggest(T a, T b)
+{
+	if (a > b)
+		return a;
+	return b;
+}
+
+
+
 int main()
 {
+	BinarySearch();
+	float f = GetBiggest<float>(12.0, 13.0);
+	int i = GetBiggest<int>(2, 1);
+	
+	vector<Hej> sdaadsadsads;
+	MySuperStack<int> myStack;
+	MySuperStack<float> mtSyack2;
+	MySuperStack<Hej> sdaasdasd;
+	//IntStack i;
+	//FloatStack f;
+	
 	LRU();
 	Bankomat();
 	Lab5();
